@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <title>Tutors Connect</title>
+</head>
+
+<body>
+    <nav>
+        <span>tutors connect</span>
+
+        <div class="navlinks">
+            <ul>
+                <li><a href="#">blog</a></li>
+                <li><a href="search.html">search</a></li>
+                <li><a class="cta-1" href="register.html">sign up</a></li>
+                <li><a class="cta-1" href="login.html">sign in</a></li>
+            </ul>
+        </div>
+
+        <div class="hamburger" id="hamburger">
+            &#9776;
+        </div>
+    </nav>
+
+    <section class="auth-wrapper">
+        <h3>Parent profile setup . (2) - Ward profile setup</h3>
+        <form action="">
+            <label for="wfullname">Enter your ward's fullname
+                <input type="text" name="wfullname" id="wfullname">
+            </label>
+
+            <label for="w_age">Age
+                <input type="number" name="w_age" id="w_age">
+            </label>
+
+            <h4>Gender</h4>
+            <div class="gender-area" style="display: flex; gap: 3rem;">
+
+                <div class="male" style="display: flex; gap: 1rem; align-items: center;">
+                    <input type="radio" name="gender" id="male" value="male">
+                    <label for="male">Male</label>
+                </div>
+
+                <div class="female" style="display: flex; gap: 1rem; align-items: center;">
+                    <input type="radio" name="gender" id="female" value="female">
+                    <label for="female">Female</label>
+                </div>
+
+            </div>
+
+
+            <label for="level">School Level
+                <select name="level" id="level">
+                    <option value="" selected>--select level--</option>
+                    <option value="nursery">Nursery</option>
+                    <option value="primary">Primary</option>
+                    <option value="junior_secondary">Junior Secondary</option>
+                    <option value="senior_secondary">Senior Secondary</option>
+                    <option value="other">Other</option>
+                </select>
+            </label>
+
+            <label for="needs">Learning needs
+                <input type="text" name="needs" id="needs">
+            </label>
+
+            <label for="goals">Learning needs
+                <input type="text" name="goals" id="goals" placeholder="Prepare for WAEC, Improve English speaking">
+            </label>
+
+            <label for="pref_sched">Preferred Schedule
+                <input type="text" name="pref_sched" id="pref_sched" placeholder="weekends, afer School 4-6 PM etc.">
+            </label>
+
+            <button type="submit">Next &rarr;</button>
+
+        </form>
+
+
+    </section>
+
+    <footer>
+        <p>Philip Gisanrin &copy;2025. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.navlinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+.profile{
+    width: 100%;
+    display: flex;
+    min-height: 90vh;
+}
+
+.top {
+    width: 280px;
+    /* max-width: 300px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 50px;
+    border-right: 1px solid black;
+}
+
+.top-image img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.top-text{
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.subjects {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.subjects > p {
+    padding: .15rem .15rem;
+    background-color: black;
+    border: none;
+    border-radius: 4px;
+    color: aquamarine;
+}
+
+.main-area {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+.top-main-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book_btn{
+    padding: .5rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background-color: black;
+    color: aquamarine;
+}
+
+.days ul{
+    list-style: inside;
+}
+
+@media (max-width: 768px) {
+    .profile {
+        flex-direction: column;
+    }
+
+    .top{
+        border: none;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 1.5rem;
+        width: 100%;
+        border-bottom: 1px solid black;
+    }
+
+    .top-image {
+        width: 40%;
+    }
+
+    .top-image img{
+        width: 100px;
+        height: 100px;
+    }
+
+    .top-text {
+        gap: .35rem;
+        justify-content: center;
+        align-items: flex-start;
+        width: 60%;
+    }
+
+    .subjects {
+        gap: .5rem;
+    }
+
+
+}

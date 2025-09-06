@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <title>Tutors Connect</title>
+</head>
+
+<body>
+    <nav>
+        <span>tutors connect</span>
+
+        <div class="navlinks">
+            <ul>
+                <li><a href="#">blog</a></li>
+                <li><a href="search.html">search</a></li>
+                <li><a class="cta-1" href="register.html">sign up</a></li>
+                <li><a class="cta-1" href="login.html">sign in</a></li>
+            </ul>
+        </div>
+
+        <div class="hamburger" id="hamburger">
+            &#9776;
+        </div>
+    </nav>
+
+    <section class="auth-wrapper">
+        <h3>Parent profile setup . (1)</h3>
+        <form action="">
+            <label for="address">Enter address
+                <input type="text" name="address" id="address">
+            </label>
+
+            <label for="pref_mode">Preferred mode of learning
+                <select name="pref_mode" id="pref_mode">
+                    <option value="online" selected>Online</option>
+                    <option value="offline">In-Person</option>
+                    <option value="hybrid">Hybrid</option>
+                </select>
+            </label>
+
+            <label for="information">
+                Information
+                <textarea name="information" id="information" style="width: 100%; resize: vertical;" rows="4"
+                    placeholder="Enter any additional information here..."></textarea>
+            </label>
+
+            <button type="submit">Add Ward information &rarr;</button>
+        </form>
+
+
+    </section>
+
+    <footer>
+        <p>Philip Gisanrin &copy;2025. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.navlinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+    </script>
+</body>
+
+</html>

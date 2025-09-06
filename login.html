@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <title>Tutors Connect</title>
+</head>
+
+<body>
+    <nav>
+        <span>tutors connect</span>
+
+        <div class="navlinks">
+            <ul>
+                <li><a href="#">blog</a></li>
+                <li><a href="search.html">search</a></li>
+                <li><a class="cta-1" href="register.html">sign up</a></li>
+                <li><a class="cta-1" href="login.html">sign in</a></li>
+            </ul>
+        </div>
+    
+        <div class="hamburger" id="hamburger">
+            &#9776;
+        </div>
+    </nav>
+
+    <section class="auth-wrapper">
+        <h3>Login</h3>
+        <form action="">
+            <label for="fullname">Email
+                <input type="text" name="fullname" id="fullname">
+            </label>
+
+            <label for="fullname">Password
+                <input type="text" name="fullname" id="fullname">
+            </label>
+            <a href="#">Forgot password?</a>
+
+            <p>Don't have an account? Create one <a href="register.html">here</a></p>
+
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Philip Gisanrin &copy;2025. All rights reserved.</p>
+    </footer>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.navlinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+    </script>
+</body>
+</html>

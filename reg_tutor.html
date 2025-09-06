@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <title>Tutors Connect</title>
+</head>
+
+<body>
+    <nav>
+        <span>tutors connect</span>
+
+        <div class="navlinks">
+            <ul>
+                <li><a href="#">blog</a></li>
+                <li><a href="search.html">search</a></li>
+                <li><a class="cta-1" href="register.html">sign up</a></li>
+                <li><a class="cta-1" href="login.html">sign in</a></li>
+            </ul>
+        </div>
+
+        <div class="hamburger" id="hamburger">
+            &#9776;
+        </div>
+    </nav>
+
+    <section class="auth-wrapper">
+        <h3>Tutor profile setup . (1)</h3>
+        <form action="">
+            <label for="address">Enter address
+                <input type="text" name="address" id="address">
+            </label>
+
+            <label for="bio">Write a descriptive esaay on yourself
+                <input type="text" name="bio" id="bio">
+            </label>
+
+            <label for="rate"> How much will your charge per hour?
+                <input type="number" name="rate" id="rate" placeholder="e.g 500 naira">
+            </label>
+
+            <label for="exp">Years or experience as a Tutor
+                <input type="number" name="exp" id="exp">
+            </label>
+
+            <label for="education">Education background
+                <input type="text" name="education" id="education">
+            </label>
+
+            <label for="information">
+                Information
+                <textarea name="information" id="information" style="width: 100%; resize: vertical;" rows="4"
+                    placeholder="Enter any additional information here..."></textarea>
+            </label>
+
+
+            <button type="submit">Submit profile setup &rarr;</button>
+        </form>
+
+
+    </section>
+
+    <footer>
+        <p>Philip Gisanrin &copy;2025. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.navlinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+    </script>
+</body>
+
+</html>

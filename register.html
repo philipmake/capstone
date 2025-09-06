@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <title>Tutors Connect</title>
+</head>
+
+<body>
+    <nav>
+        <span>tutors connect</span>
+
+        <div class="navlinks">
+            <ul>
+                <li><a href="#">blog</a></li>
+                <li><a href="search.html">search</a></li>
+                <li><a class="cta-1" href="register.html">sign up</a></li>
+                <li><a class="cta-1" href="login.html">sign in</a></li>
+            </ul>
+        </div>
+  
+        <div class="hamburger" id="hamburger">
+            &#9776;
+        </div>
+    </nav>
+
+    <section class="auth-wrapper">
+        <h3>Register</h3>
+        <form action="">
+            <label for="fullname">Fullname
+                <input type="text" name="fullname" id="fullname">
+            </label>
+
+            <label for="email">Email
+                <input type="email" name="email" id="email">
+            </label>
+
+            <label for="phone">Phone
+                <input type="text" name="phone" id="phone">
+            </label>
+
+            <label for="password">Password
+                <input type="password" name="password" id="password">
+            </label>
+
+            <label for="cpswd">Confirm Password
+                <input type="password" name="cpswd" id="cpswd">
+            </label>
+
+            <label for="profile_pic">upload profile picture
+                <input type="file" name="profile_pic" id="profile_pic">
+            </label>
+
+            <p>Are you a parent or a tutor?</p>
+            <select name="role" id="role">
+                <option value="">--select role--</option>
+                <option value="tutor">Tutor</option>
+                <option value="parent">Parent</option>
+            </select>
+            <p>Already have an account? Login <a href="login.html">here</a></p>
+            <button type="submit">Next &rarr;</button>
+        </form>
+
+    </section>
+
+    <footer>
+        <p>Philip Gisanrin &copy;2025. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.navlinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+    </script>
+</body>
+</html>
