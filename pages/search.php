@@ -1,31 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$page = "search";
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/search.css">
-    <title>Tutors Connect</title>
-</head>
-
-<body>
-    <nav>
-        <span>tutors connect</span>
-
-        <div class="navlinks">
-            <ul>
-                <li><a href="#">blog</a></li>
-                <li><a href="search.html">search</a></li>
-                <li><a class="cta-1" href="register.html">sign up</a></li>
-                <li><a class="cta-1" href="login.html">sign in</a></li>
-            </ul>
-        </div>
-
-        <div class="hamburger" id="hamburger">
-            &#9776;
-        </div>
-    </nav>
+include __DIR__ . '/../includes/header.php';
+include __DIR__ . '/../includes/navbar.php';
+?>
 
     <div class="search_page_banner">
         <h3>Find a tutor near you</h3>
@@ -38,7 +16,7 @@
 
         <div class="tutor_card">
             <div class="tutor-card_1">
-                <img src="PG.png" alt="">
+                <img src="/capstone/assets/PG.png" alt="">
                 <h3>Philip Gisanrin</h3>
                 <p>rating: 4.5</p>
             </div>
@@ -59,7 +37,7 @@
 
         <div class="tutor_card">
             <div class="tutor-card_1">
-                <img src="PG.png" alt="">
+                <img src="/capstone/assets/PG.png" alt="">
                 <h3>Philip Gisanrin</h3>
                 <p>rating: 4.5</p>
             </div>
@@ -80,9 +58,8 @@
 
     </section>
 
-    <footer>
-        <p>Philip Gisanrin &copy;2025. All rights reserved.</p>
-    </footer>
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
+
     <script>
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.querySelector('.navlinks');
@@ -95,3 +72,5 @@
 </body>
 
 </html>
+
+

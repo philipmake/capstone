@@ -1,31 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$page = "auth";
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/auth.css">
-    <title>Tutors Connect</title>
-</head>
-
-<body>
-    <nav>
-        <span>tutors connect</span>
-
-        <div class="navlinks">
-            <ul>
-                <li><a href="#">blog</a></li>
-                <li><a href="search.html">search</a></li>
-                <li><a class="cta-1" href="register.html">sign up</a></li>
-                <li><a class="cta-1" href="login.html">sign in</a></li>
-            </ul>
-        </div>
-
-        <div class="hamburger" id="hamburger">
-            &#9776;
-        </div>
-    </nav>
+include __DIR__ . '/../includes/header.php';
+include __DIR__ . '/../includes/navbar.php';
+?>
 
     <section class="auth-wrapper">
         <h3>Book Tutor</h3>
@@ -82,9 +60,7 @@
 
     </section>
 
-    <footer>
-        <p>Philip Gisanrin &copy;2025. All rights reserved.</p>
-    </footer>
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
 
     <script>
         const hamburger = document.getElementById('hamburger');
@@ -98,3 +74,5 @@
 </body>
 
 </html>
+
+

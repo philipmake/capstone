@@ -1,35 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$page = "auth";
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/auth.css">
-    <title>Tutors Connect</title>
-</head>
+include __DIR__ . '/../includes/header.php';
+include __DIR__ . '/../includes/navbar.php';
+require_once __DIR__ . '/../database/TutorProfile.php';
 
-<body>
-    <nav>
-        <span>tutors connect</span>
+$error = '';
+$success = '';
 
-        <div class="navlinks">
-            <ul>
-                <li><a href="#">blog</a></li>
-                <li><a href="search.html">search</a></li>
-                <li><a class="cta-1" href="register.html">sign up</a></li>
-                <li><a class="cta-1" href="login.html">sign in</a></li>
-            </ul>
-        </div>
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['submit'])) {
+        $tutor_id = $_SESSION['id'];
+        $address = trim($_POST['address']);
+        $bio = trim($_POST['bio']);
+        $hourly_rate = trim($_POST['rate']); 
+        $experience_yrs = trim($_POST['exp']);
+        $education = trim($_POST['education']);
 
-        <div class="hamburger" id="hamburger">
-            &#9776;
-        </div>
-    </nav>
+        if (empty($address) || empty($bio) || empty($hourly_rate) || empty($experience_yrs) || empty($education)) {
+            $error = "All fields are required";
+        } else {
+            $tutor = new TutorProfile();
+            $t = $tutor->create($tutor_id, $address, $bio, $hourly_rate, $experience_yrs, $education);
+            if ($t) {
+                echo $t;
+                $success = "Successfull profile creation";
+                header("Location: tutor_profile.php");
+            } else {
+                $error = "Error creating tutor profile";
+            }
+        }
+    }
+}
+
+?>
 
     <section class="auth-wrapper">
+        <?php echo $success; ?>
+        <?php echo $error; ?>
+
         <h3>Tutor profile setup . (1)</h3>
-        <form action="">
+        <form action="" method="post">
             <label for="address">Enter address
                 <input type="text" name="address" id="address">
             </label>
@@ -61,15 +72,14 @@
 
             <!-- payment stuff comes here -->
              
-            <button type="submit">Submit profile setup &rarr;</button>
+            <button type="submit" name="submit">Submit profile setup</button>
         </form>
 
 
     </section>
 
-    <footer>
-        <p>Philip Gisanrin &copy;2025. All rights reserved.</p>
-    </footer>
+
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
 
     <script>
         const hamburger = document.getElementById('hamburger');
@@ -83,3 +93,5 @@
 </body>
 
 </html>
+
+

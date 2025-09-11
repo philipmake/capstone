@@ -1,35 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$page = "profile";
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/profile.css" />
-    <title>Tutors Connect</title>
-</head>
-
-<body>
-    <nav>
-        <span>tutors connect</span>
-
-        <div class="navlinks">
-            <ul>
-                <li><a href="#">blog</a></li>
-                <li><a href="search.html">search</a></li>
-                <li><a class="cta-1" href="register.html">sign up</a></li>
-                <li><a class="cta-1" href="login.html">sign in</a></li>
-            </ul>
-        </div>
-
-        <div class="hamburger" id="hamburger">&#9776;</div>
-    </nav>
+include __DIR__ . '/../includes/header.php';
+include __DIR__ . '/../includes/navbar.php';
+?>
 
     <div class="profile">
 
         <div class="top">
             <div class="top-image">
-                <img src="PG.png" alt="tutor_profile_picture" />
+                <img src="/capstone/assets/PG.png" alt="tutor_profile_picture" />
             </div>
             <div class="top-text">
                 <h1>Philip G.</h1>
@@ -115,18 +95,20 @@
         </div>
     </div>
 
-    <footer>
-        <p>Philip Gisanrin &copy;2025. All rights reserved.</p>
-    </footer>
+
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
 
     <script>
-        const hamburger = document.getElementById("hamburger");
-        const navLinks = document.querySelector(".navlinks");
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.navlinks');
 
-        hamburger.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
+
     </script>
 </body>
 
 </html>
+
+

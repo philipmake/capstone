@@ -1,35 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$page = "profile";
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/profile.css" />
-    <title>Parents Connect</title>
-</head>
-
-<body>
-    <nav>
-        <span>tutors connect</span>
-
-        <div class="navlinks">
-            <ul>
-                <li><a href="#">blog</a></li>
-                <li><a href="search.html">search</a></li>
-                <li><a class="cta-1" href="register.html">sign up</a></li>
-                <li><a class="cta-1" href="login.html">sign in</a></li>
-            </ul>
-        </div>
-
-        <div class="hamburger" id="hamburger">&#9776;</div>
-    </nav>
+include __DIR__ . '/../includes/header.php';
+include __DIR__ . '/../includes/navbar.php';
+?>
 
     <div class="profile">
 
         <div class="top">
             <div class="top-image">
-                <img src="PG.png" alt="parent_profile_picture" />
+                <img src="/capstone/assets/PG.png" alt="parent_profile_picture" />
             </div>
             <div class="top-text">
                 <h1>Jane Doe</h1>
@@ -42,7 +22,8 @@
 
         <div class="main-area">
 
-            <h5 style="text-decoration: underline;">Wards (Students):</h5>
+            <h3 style=";">Ward(s)</h3>
+            <hr>
             <div class="wards">
                 <div class="ward-card">
                     <p><strong>Name:</strong> Michael Doe</p>
@@ -55,6 +36,9 @@
                     <p><strong>Preferred Schedule:</strong> Weekends</p>
                 </div>
 
+                <br>
+            <hr>
+            <br>
                 <div class="ward-card">
                     <p><strong>Name:</strong> Sarah Doe</p>
                     <p><strong>Age:</strong> 9</p>
@@ -77,18 +61,19 @@
         </div>
     </div>
 
-    <footer>
-        <p>Jane Doe &copy; 2025. All rights reserved.</p>
-    </footer>
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
 
     <script>
-        const hamburger = document.getElementById("hamburger");
-        const navLinks = document.querySelector(".navlinks");
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.navlinks');
 
-        hamburger.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
+
     </script>
 </body>
 
 </html>
+
+
