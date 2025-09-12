@@ -21,6 +21,8 @@ class TutorProfile {
             ":experience_yrs" => $experience_yrs,
             ":education" => $education
         ]);
+
+         
     }
 
     public function getByTutorId($tutor_id) {

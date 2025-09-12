@@ -10,20 +10,22 @@ class User {
     }
 
     public function signup($role, $fullname, $email, $phone, $alt_phone, $password) {
-        // checks if email already exists
-        $stmt = $this->conn->prepare("SELECT id FROM users WHERE email = :email");
-        $stmt->execute([':email' =>$email]);
+        try {
+            // checks if email already exists
+            $stmt = $this->conn->prepare("SELECT id FROM users WHERE email = :email");
+            $stmt->execute([':email' =>$email]);
 
-        if ($stmt->fetch()) {
-            die("Email already exists.");
-        } else {
+            if ($stmt->fetch()) {
+                throw new Exception("Email already exists.");
+            }
+
             $sql = "INSERT INTO users (role, fullname, email, phone, alt_phone, password) 
                     VALUES (:role, :fullname, :email, :phone, :alt_phone, :password)";
             $stmt = $this->conn->prepare($sql);
 
             $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-            return $stmt->execute([
+            $stmt->execute([
                 ":role" => $role,
                 ":fullname" => $fullname,
                 ":email" => $email,
@@ -31,7 +33,13 @@ class User {
                 ":alt_phone" => $alt_phone,
                 ":password" => $hashedPassword
             ]);
+
+            return $this->conn->lastInsertId();
+            
+        } catch (Exception $e) {
+            return false;
         }
+
     }
 
     public function login($email, $password) {

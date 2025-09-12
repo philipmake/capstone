@@ -29,10 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $user = new User();
             $current_user = $user->signup($role, $fullname, $email, $phone, $alt_phone, $password);
             
-            $_SESSION['id'] = $current_user['id'];  // add userid for other database access in the web application specific to the user
+            // add userid for other database access in the web application specific to the user
 
-            if ($current_user) {
+            if (!empty($current_user)) {
                 $success = "Registration successful";
+                
+                $_SESSION['id'] = $current_user; 
                 if ($role == "tutor") {
                     header("Location: tutor_reg.php");
                 } elseif ($role == "parent") {
