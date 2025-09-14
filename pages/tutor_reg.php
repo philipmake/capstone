@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $tutor = new TutorProfile();
             $t = $tutor->create($tutor_id, $address, $bio, $hourly_rate, $experience_yrs, $education);
             if ($t) {
-                echo $t;
                 $success = "Successfull profile creation";
                 header("Location: tutor_profile.php");
             } else {
@@ -36,10 +35,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
     <section class="auth-wrapper">
-        <?php echo $success; ?>
-        <?php echo $error; ?>
-
         <h3>Tutor profile setup . (1)</h3>
+
+        <!-- Display success or error messages -->
+        <?php if (!empty($error)): ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+        <?php endif; ?>
+
+        <?php if (!empty($success)): ?>
+            <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
+        <?php endif; ?>
+
         <form action="" method="post">
             <label for="address">Enter address
                 <input type="text" name="address" id="address">

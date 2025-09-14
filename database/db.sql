@@ -63,13 +63,12 @@ CREATE TABLE ward (
     age INT NOT NULL,                    -- Age
     gender ENUM('male','female','other'),
     school_level ENUM('nursery','primary','junior_secondary','senior_secondary','other') NOT NULL,
-    subject_id INT NOT NULL,             -- Subject the ward needs tutoring in
+    subject   VARCHAR(55) NOT NULL,             -- Subject the ward needs tutoring in
     learning_needs TEXT,                 -- e.g. "struggles with math basics", "exam prep"
     goals TEXT,                          -- e.g. "Prepare for WAEC", "Improve English speaking"
     preferred_schedule VARCHAR(255),     -- e.g. "Weekends", "After school 4-6 PM"
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (parent_id) REFERENCES parent(id) ON DELETE CASCADE,
-    FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
 );
 
 -- 6. Tutor table

@@ -12,14 +12,22 @@ class ParentProfile {
     public function create($user_id, $address, $preferred_mode, $additional_info) {
         $sql = "INSERT INTO parent (user_id, address, preferred_mode, additional_info)
                 VALUES (:user_id, :address, :preferred_mode, :additional_info)";
+        
         $stmt = $this->conn->prepare($sql);
-        return $stmt->execute([
+        $executed = $stmt->execute([
             ":user_id" => $user_id,
             ":address" => $address,
             ":preferred_mode" => $preferred_mode,
             ":additional_info" => $additional_info
         ]);
+
+        if ($executed) {
+            return $this->conn->lastInsertId();  // Return newly inserted parent ID
+        }
+
+        return false;
     }
+
 
     public function getByUserId($user_id) {
         $sql = "SELECT * FROM parent WHERE user_id = :user_id";
