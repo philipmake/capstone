@@ -15,7 +15,7 @@ if (!isset($_SESSION['parent_id'])) {
     exit;
 }
 
-// Optional: tutor_id could be passed as GET param from tutor list/page
+// tutor_id passed as GET param from tutor list/page
 if (isset($_GET['tutor_id'])) {
     $_SESSION['tutor_id'] = intval($_GET['tutor_id']);
 }
@@ -23,7 +23,7 @@ if (isset($_GET['tutor_id'])) {
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['submit'])) {
         $parent_id = $_SESSION['parent_id'];
-        $tutor_id = $_SESSION['tutor_id'] ?? null;
+        $tutor_id = $_SESSION['tutor_id'];
         $subject = trim($_POST['subject']);
         $days = trim($_POST['days']);
         $duration = trim($_POST['duration']);

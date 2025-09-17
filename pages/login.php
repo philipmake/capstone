@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </label>
         <a href="#">Forgot password?</a>
 
-        <p>Don't have an account? Create one <a href="register.php">here</a></p>
+        <p>Don't have an account? Create one <a style="color:blue;" href="register.php">here</a></p>
 
         <button type="submit" name="submit">Login</button>
     </form>

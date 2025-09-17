@@ -14,7 +14,7 @@ class Booking {
      * Returns inserted booking id on success, false on failure.
      */
     public function create($parent_id, $tutor_id, $subject, $days, $duration, $start_date, $end_date, $status = 'pending') {
-        $sql = "INSERT INTO bookings (parent_id, tutor_id, subject, days, duration, start_date, end_date, status, created_at)
+        $sql = "INSERT INTO booking (parent_id, tutor_id, subject, days, duration, start_date, end_date, status, created_at)
                 VALUES (:parent_id, :tutor_id, :subject, :days, :duration, :start_date, :end_date, :status, NOW())";
         $stmt = $this->conn->prepare($sql);
         $ok = $stmt->execute([
@@ -38,8 +38,8 @@ class Booking {
      * Get bookings by parent id (returns array)
      */
     public function getByParent($parent_id) {
-        $sql = "SELECT b.*, t.user_id AS tutor_user_id, t.hourly_rate AS tutor_rate
-                FROM bookings b
+        $sql = "SELECT b.*, t.tutor_id AS tutor_user_id, t.hourly_rate AS tutor_rate
+                FROM booking b
                 LEFT JOIN tutor t ON t.tutor_id = b.tutor_id
                 WHERE b.parent_id = :parent_id
                 ORDER BY b.created_at DESC";
@@ -49,10 +49,23 @@ class Booking {
     }
 
     /**
+     * Get bookings by tutor id (returns array)
+     */
+    public function getByTutor($tutor_id) {
+        $sql = "SELECT *
+                FROM booking 
+                WHERE tutor_id = :tutor_id
+                ORDER BY created_at DESC";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':tutor_id' => $tutor_id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
      * (Optional) get booking by id
      */
     public function getById($id) {
-        $sql = "SELECT * FROM bookings WHERE id = :id LIMIT 1";
+        $sql = "SELECT * FROM booking WHERE id = :id LIMIT 1";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([':id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);

@@ -1,18 +1,26 @@
 <?php
+session_start();
 $page = "search";
 
 include __DIR__ . '/../includes/header.php';
 include __DIR__ . '/../includes/navbar.php';
 require_once __DIR__ . '/../database/Database.php';
 
+// for users table information for tutors only
 try {
     $db = new Database();
     $conn = $db->connect();
 
-    $sql = "SELECT * FROM tutor";
+    $sql = "SELECT u.id, u.fullname, t.tutor_id, t.bio, t.rating 
+            FROM tutor t 
+            JOIN users u ON t.tutor_id = u.id 
+            WHERE u.role = :role";
+
     $stmt = $conn->prepare($sql);
-    $stmt->execute();
+    $stmt->execute([":role"=>"tutor"]);
     $tutors = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // print_r($tutors);
+
 } catch (PDOException $e) {
     echo $e->getMessage();
     $tutors = [];
@@ -23,13 +31,14 @@ try {
     <h3>Find a tutor near you</h3>
 </div>
 
+
 <section class="search_wrapper">
     <?php if (!empty($tutors)): ?>
         <?php foreach ($tutors as $t): ?>
             <div class="tutor_card">
                 <div class="tutor-card_1">
                     <img src="/capstone/assets/PG.png" alt="">
-                    <h3><?= htmlspecialchars($t['name'] ?? 'Tutor') ?></h3>
+                    <h3><?= htmlspecialchars($t['fullname'] ?? 'Tutor') ?></h3>
                     <p>rating: <?= htmlspecialchars($t['rating'] ?? 'N/A') ?></p>
                 </div>
                 <p><?= htmlspecialchars($t['bio'] ?? 'No description') ?></p>

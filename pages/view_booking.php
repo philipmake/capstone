@@ -1,20 +1,24 @@
 <?php
 session_start();
-$page = "profile";
+$page = "auth";
 
 include __DIR__ . '/../includes/header.php';
 include __DIR__ . '/../includes/navbar.php';
 require_once __DIR__ . '/../database/Booking.php';
 
-if (!isset($_SESSION['parent_id'])) {
+if (!isset($_SESSION['id']) || !isset($_SESSION['role'])) {
     header("Location: login.php");
     exit;
 }
 
-$parent_id = $_SESSION['parent_id'];
-
 $book = new Booking();
-$bookings = $book->getByParent($parent_id);
+$bookings = [];
+
+if ($_SESSION['role'] === 'parent') {
+    $bookings = $book->getByParent($_SESSION['id']);
+} elseif ($_SESSION['role'] === 'tutor') {
+    $bookings = $book->getByTutor($_SESSION['id']);
+}
 ?>
 
 <section class="auth-wrapper">
@@ -29,9 +33,6 @@ $bookings = $book->getByParent($parent_id);
                 <p><strong>Start Date:</strong> <?= htmlspecialchars($b['start_date']) ?></p>
                 <p><strong>End Date:</strong> <?= htmlspecialchars($b['end_date']) ?></p>
                 <p><strong>Status:</strong> <?= htmlspecialchars($b['status']) ?></p>
-                <?php if (!empty($b['tutor_user_id'])): ?>
-                    <p><strong>Tutor user id:</strong> <?= htmlspecialchars($b['tutor_user_id']) ?></p>
-                <?php endif; ?>
             </div>
         <?php endforeach; ?>
     <?php else: ?>

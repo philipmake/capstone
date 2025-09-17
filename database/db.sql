@@ -18,11 +18,11 @@ CREATE TABLE subjects (
 );
 
 -- 3. Bookings table
-CREATE TABLE bookings (
+CREATE TABLE booking (
     id INT AUTO_INCREMENT PRIMARY KEY,
     parent_id INT,
     tutor_id INT,
-    subject_id INT,
+    subject TEXT,
     days ENUM('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday') NOT NULL,
     duration INT NOT NULL,
     start_date DATE NOT NULL,
@@ -30,19 +30,7 @@ CREATE TABLE bookings (
     status ENUM('pending', 'confirmed', 'cancelled', 'completed') DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (parent_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (tutor_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
-);
-
--- 4. Payments table
-CREATE TABLE payments (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    booking_id INT,
-    amount DECIMAL(8, 2) NOT NULL,
-    method ENUM('card', 'bank_transfer', 'cash') NOT NULL,
-    status ENUM('pending', 'paid', 'failed') DEFAULT 'pending',
-    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (booking_id) REFERENCES bookings(id) ON DELETE CASCADE
+    FOREIGN KEY (tutor_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 -- 5. Parent table (just links a user to the parent role)
@@ -50,7 +38,7 @@ CREATE TABLE parent (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL UNIQUE,
     address VARCHAR(255),
-    preferred_mode ENUM('online' 'offline', 'hybrid') DEFAULT 'online',
+    preferred_mode ENUM('online', 'offline', 'hybrid') DEFAULT 'online',
     additional_info TEXT,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );

@@ -27,25 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } elseif ($confirm_password !== $password) {
             $error = "Passwords do not match!";
         } else {
-            // Handle profile picture upload (optional)
-            $profile_pic_path = null;
-            if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] === UPLOAD_ERR_OK) {
-                $uploadDir = __DIR__ . '/../assets/uploads/';
-                if (!is_dir($uploadDir)) {
-                    mkdir($uploadDir, 0755, true);
-                }
-                $tmp = $_FILES['profile_pic']['tmp_name'];
-                $name = time() . '_' . basename($_FILES['profile_pic']['name']);
-                $dest = $uploadDir . $name;
-                if (move_uploaded_file($tmp, $dest)) {
-                    // store relative path
-                    $profile_pic_path = '/capstone/assets/uploads/' . $name;
-                }
-            }
-
             $user = new User();
             // Expectation: signup returns newly created user id (int) or false on failure.
-            $current_user = $user->signup($role, $fullname, $email, $phone, $alt_phone, $password, $profile_pic_path ?? null);
+            $current_user = $user->signup($role, $fullname, $email, $phone, $alt_phone, $password);
             
             if (!empty($current_user)) {
                 $success = "Registration successful";
@@ -107,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <option value="tutor">Tutor</option>
             <option value="parent">Parent</option>
         </select>
-        <p>Already have an account? Login <a href="login.php">here</a></p>
+        <p>Already have an account? Login <a style="color:blue;" href="login.php">here</a></p>
         <button type="submit" name="submit">Next &rarr;</button>
     </form>
 </section>
