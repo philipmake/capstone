@@ -137,6 +137,28 @@ footer {
     align-items: center;
 }
 
+.footer-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+.footer-links a:hover {
+    color: #007BFF;
+    /* Example hover color */
+}
+
+.footer-socials a {
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
 @media (max-width: 768px) {
 
     nav {
