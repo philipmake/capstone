@@ -20,53 +20,57 @@ include __DIR__ . '/includes/navbar.php';
         <h3>What We Provide</h3>
         <div class="wrapper">
             <div class="card">
+                <img src="/capstone/assets/experienced-tutors.jpg" alt="Experienced Tutors">
                 <h4>Experienced Tutors</h4>
                 <p>Work with qualified professionals who specialize in different subjects and grade levels to provide the best learning experience for your child.</p>
             </div>
 
             <div class="card">
+                <img src="/capstone/assets/verified-tutors.jpg" alt="FVerified Tutors">
                 <h4>Verified & Background-Checked</h4>
                 <p>Every tutor goes through a strict verification and background check process to ensure safety and reliability.</p>
             </div>
 
             <div class="card">
+                <img src="/capstone/assets/flexible-scheduling.jpg" alt="Flexible Scheduling">
                 <h4>Flexible Scheduling</h4>
                 <p>Choose the days and times that work best for you. Our platform makes it easy to reschedule and manage your lessons.</p>
             </div>
 
             <div class="card">
+                <img src="/capstone/assets/personalized-learning.jpg" alt="Personalized Learning">
                 <h4>Personalized Learning Plans</h4>
                 <p>Lessons are tailored to each student’s strengths, weaknesses, and goals for maximum results.</p>
             </div>
         </div>
     </section>
 
-        <section class="how-it-works">
+    <section class="how-it-works">
         <h3>How It Works</h3>
         <p>Getting started is simple. Follow these easy steps to connect with the right tutor for your child:</p>
         <div class="wrapper">
             
             <div class="step">
                 <i class="fa-solid fa-user-plus fa-2x"></i>
-                <h4>1. Sign Up</h4>
+                <h4>Sign Up</h4>
                 <p>Create a free account as a parent or tutor in just a few minutes.</p>
             </div>
 
             <div class="step">
                 <i class="fa-solid fa-magnifying-glass fa-2x"></i>
-                <h4>2. Search or Get Matched</h4>
+                <h4>Search or Get Matched</h4>
                 <p>Browse through available tutors or let us recommend one based on your needs.</p>
             </div>
 
             <div class="step">
                 <i class="fa-solid fa-comments fa-2x"></i>
-                <h4>3. Connect with a Tutor</h4>
+                <h4>Connect with a Tutor</h4>
                 <p>Chat, schedule, and discuss learning goals directly with your chosen tutor.</p>
             </div>
 
             <div class="step">
                 <i class="fa-solid fa-book-open-reader fa-2x"></i>
-                <h4>4. Start Learning!</h4>
+                <h4>Start Learning!</h4>
                 <p>Begin your personalized lessons and track progress along the way.</p>
             </div>
 

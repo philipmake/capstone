@@ -1,4 +1,4 @@
--- 1. Users table first
+-- Users table
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     role ENUM('tutor', 'parent') NOT NULL,
@@ -11,13 +11,13 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 2. Subjects table
+-- Subjects table
 CREATE TABLE subjects (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE
 );
 
--- 3. Bookings table
+-- Bookings table
 CREATE TABLE booking (
     id INT AUTO_INCREMENT PRIMARY KEY,
     parent_id INT,
@@ -33,7 +33,7 @@ CREATE TABLE booking (
     FOREIGN KEY (tutor_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- 5. Parent table (just links a user to the parent role)
+-- Parent table (just links a user to the parent role)
 CREATE TABLE parent (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL UNIQUE,
@@ -51,7 +51,7 @@ CREATE TABLE ward (
     age INT NOT NULL,                    -- Age
     gender ENUM('male','female','other'),
     school_level ENUM('nursery','primary','junior_secondary','senior_secondary','other') NOT NULL,
-    subject   VARCHAR(55) NOT NULL,             -- Subject the ward needs tutoring in
+    subject VARCHAR(55) NOT NULL,             -- Subject the ward needs tutoring in
     learning_needs TEXT,                 -- e.g. "struggles with math basics", "exam prep"
     goals TEXT,                          -- e.g. "Prepare for WAEC", "Improve English speaking"
     preferred_schedule VARCHAR(255),     -- e.g. "Weekends", "After school 4-6 PM"
@@ -59,7 +59,7 @@ CREATE TABLE ward (
     FOREIGN KEY (parent_id) REFERENCES parent(id) ON DELETE CASCADE,
 );
 
--- 6. Tutor table
+-- Tutor table
 CREATE TABLE tutor (
     tutor_id INT PRIMARY KEY,
     address VARCHAR(255),
@@ -71,7 +71,7 @@ CREATE TABLE tutor (
     FOREIGN KEY (tutor_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- 7. Tutor_Subjects table (many-to-many relationship)
+-- Tutor_Subjects table (many-to-many relationship)
 CREATE TABLE tutor_subjects (
     tutor_id INT,
     subject_id INT,
@@ -80,7 +80,7 @@ CREATE TABLE tutor_subjects (
     FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
 );
 
--- 8. Availability table
+-- Availability table
 CREATE TABLE availability (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tutor_id INT,
@@ -90,7 +90,7 @@ CREATE TABLE availability (
     FOREIGN KEY (tutor_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- 9. Reviews table
+-- Reviews table
 CREATE TABLE reviews (
     id INT AUTO_INCREMENT PRIMARY KEY,
     booking_id INT,
@@ -119,3 +119,4 @@ INSERT INTO subjects (name) VALUES
 ('Economics'),
 ('Booking Keeping'),
 ('Diction and Phonetics');
+('Basic Science and Technology');
